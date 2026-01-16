@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Build</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header><h1>🧩 Build Experience</h1></header>
+
+<label><input type="checkbox" value="299"> Meditation</label><br>
+<label><input type="checkbox" value="199"> Slime</label><br>
+<label><input type="checkbox" value="149"> Origami</label><br>
+
+<h2>Total ₹<span id="sum">0</span></h2>
+
+<script>
+let boxes = document.querySelectorAll("input");
+boxes.forEach(b =>
+  b.addEventListener("change", ()=>{
+    let s=0;
+    boxes.forEach(x=>{if(x.checked)s+=+x.value});
+    document.getElementById("sum").innerText=s;
+  })
+);
+</script>
+
+</body>
+</html>
