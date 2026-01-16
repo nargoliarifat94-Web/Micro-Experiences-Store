@@ -1,47 +1,55 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+<meta charset="UTF-8">
 <title>Micro Experiences Store</title>
 <link rel="stylesheet" href="style.css">
 </head>
+
 <body onload="hideLoader()">
 
 <div id="loader"></div>
 
 <header>
-  <h1>🌟 Micro Experiences</h1>
+  <h2>🌟 Micro Experiences</h2>
   <nav>
-    <a href="index.html">Home</a>
-    <a href="mood.html">Mood</a>
-    <a href="build.html">Build</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
+    <a href="#">Home</a>
     <button onclick="toggleDark()">🌙</button>
   </nav>
-  <input id="search" placeholder="Search experiences..." onkeyup="filterProducts()">
 </header>
 
-<section class="products">
-  <div class="card" data-name="Meditation Pack" data-price="299">
+<section class="hero">
+  <h1>Feel Better in Minutes</h1>
+  <p>Affordable micro-experiences for calm, creativity & joy</p>
+  <button onclick="scrollToProducts()">Explore</button>
+</section>
+
+<section id="products" class="products">
+
+  <div class="card" data-name="Meditation Pack" data-price="299" data-desc="Short guided calm meditation">
+    <span class="tag relax">Relax</span>
     <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773">
     <h3>🧘 Meditation Pack</h3>
-    <p>5-minute calm experience</p>
+    <button onclick="openModal(this)">Quick View</button>
     <button onclick="addToCart(this)">Add ₹299</button>
   </div>
 
-  <div class="card" data-name="DIY Slime Kit" data-price="199">
+  <div class="card" data-name="DIY Slime Kit" data-price="199" data-desc="Fun creative slime making">
+    <span class="tag fun">Fun</span>
     <img src="https://images.unsplash.com/photo-1581091215367-59ab6b4f41c4">
     <h3>🎉 DIY Slime Kit</h3>
-    <p>Creative stress buster</p>
+    <button onclick="openModal(this)">Quick View</button>
     <button onclick="addToCart(this)">Add ₹199</button>
   </div>
 
-  <div class="card" data-name="Origami Kit" data-price="149">
+  <div class="card" data-name="Origami Kit" data-price="149" data-desc="Fold paper, reduce stress">
+    <span class="tag creative">Creative</span>
     <img src="https://images.unsplash.com/photo-1583212292454-1fe6229603b7">
     <h3>🎨 Origami Kit</h3>
-    <p>Fold & relax creatively</p>
+    <button onclick="openModal(this)">Quick View</button>
     <button onclick="addToCart(this)">Add ₹149</button>
   </div>
+
 </section>
 
 <section id="cart">
@@ -51,7 +59,23 @@
   <button onclick="checkout()">Checkout</button>
 </section>
 
+<section class="reviews">
+  <h2>💬 What Users Say</h2>
+  <div class="review-box">“Perfect for exam stress.” – Student</div>
+  <div class="review-box">“Very creative idea.” – Judge</div>
+</section>
+
 <div id="toast">Added to cart ✅</div>
+
+<!-- MODAL -->
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h2 id="mTitle"></h2>
+    <p id="mDesc"></p>
+    <p><b>Price ₹<span id="mPrice"></span></b></p>
+  </div>
+</div>
 
 <script src="script.js"></script>
 </body>
