@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Mood</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header><h1>🎭 Choose Mood</h1></header>
+
+<button onclick="show('Relax 😌 → Meditation')">Relax</button>
+<button onclick="show('Fun 🎉 → Slime')">Fun</button>
+<button onclick="show('Creative 🎨 → Origami')">Creative</button>
+
+<h2 id="result"></h2>
+
+<script>
+function show(t){
+  document.getElementById("result").innerText = t;
+}
+</script>
+
+</body>
+</html>
