@@ -10,19 +10,14 @@
 
 <div id="cart" style="max-width:300px;margin:auto;">
   <h2>Total ₹<span id="amt"></span></h2>
-  <input placeholder="Card Name"><br><br>
   <input placeholder="Card Number"><br><br>
   <button onclick="pay()">Pay</button>
 </div>
 
 <script>
-document.getElementById("amt").innerText =
-  localStorage.getItem("totalAmount");
-
+document.getElementById("amt").innerText=localStorage.getItem("totalAmount");
 function pay(){
-  alert("✅ Payment Successful!");
-  localStorage.clear();
-  window.location.href = "index.html";
+  window.location.href="success.html";
 }
 </script>
 
