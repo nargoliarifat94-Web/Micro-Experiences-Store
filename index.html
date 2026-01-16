@@ -1,75 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Micro Experiences Store</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>Micro Experiences Store</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>🌟 Micro Experiences Store</h1>
-        <nav>
-            <a href="#experiences">Experiences</a>
-            <a href="#cart">Cart 🛒</a>
-        </nav>
-    </header>
 
-    <section id="experiences">
-        <h2>Choose Your Micro-Experience</h2>
-        <div class="products-container">
-            <!-- Product Cards with modal trigger -->
-            <div class="product-card" data-price="299" data-desc="Relax your mind in 5 minutes with guided audio and visuals." data-img="https://images.unsplash.com/photo-1507525428034-b723cf961d3e">
-                <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" alt="5-min Meditation">
-                <h3>5-Min Meditation Pack</h3>
-                <button class="view-details">View Details</button>
-                <button class="add-to-cart">Add to Cart - ₹299</button>
-            </div>
+<header>
+  <h1>🌟 Micro Experiences</h1>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="mood.html">Mood</a>
+    <a href="build.html">Build</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <button onclick="toggleDark()">🌙</button>
+  </nav>
+</header>
 
-            <div class="product-card" data-price="199" data-desc="Create your own slime with safe ingredients included." data-img="https://images.unsplash.com/photo-1596495577886-d920f8f4dc1c">
-                <img src="https://images.unsplash.com/photo-1596495577886-d920f8f4dc1c" alt="DIY Slime Kit">
-                <h3>DIY Slime Kit</h3>
-                <button class="view-details">View Details</button>
-                <button class="add-to-cart">Add to Cart - ₹199</button>
-            </div>
+<section class="products">
+  <div class="card" data-name="Meditation Pack" data-price="299">
+    <h3>🧘 Meditation Pack</h3>
+    <p>5-minute calm experience</p>
+    <button onclick="addToCart(this)">Add ₹299</button>
+  </div>
 
-            <div class="product-card" data-price="149" data-desc="Fold 5 creative origami designs with colorful papers." data-img="https://images.unsplash.com/photo-1591798307170-88f7d4979b6f">
-                <img src="https://images.unsplash.com/photo-1591798307170-88f7d4979b6f" alt="Origami Kit">
-                <h3>Origami Mini Kit</h3>
-                <button class="view-details">View Details</button>
-                <button class="add-to-cart">Add to Cart - ₹149</button>
-            </div>
+  <div class="card" data-name="DIY Slime Kit" data-price="199">
+    <h3>🎉 DIY Slime</h3>
+    <p>Fun creative kit</p>
+    <button onclick="addToCart(this)">Add ₹199</button>
+  </div>
 
-            <div class="product-card" data-price="249" data-desc="Cook a 10-minute snack using pre-portioned ingredients." data-img="https://images.unsplash.com/photo-1600891964599-f61ba0e24092">
-                <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092" alt="Mini Recipe Kit">
-                <h3>Mini Recipe Kit</h3>
-                <button class="view-details">View Details</button>
-                <button class="add-to-cart">Add to Cart - ₹249</button>
-            </div>
-        </div>
-    </section>
+  <div class="card" data-name="Origami Kit" data-price="149">
+    <h3>🎨 Origami Kit</h3>
+    <p>Creative paper folds</p>
+    <button onclick="addToCart(this)">Add ₹149</button>
+  </div>
+</section>
 
-    <!-- Modal for product details -->
-    <div id="modal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <img id="modal-img" src="" alt="">
-            <h3 id="modal-title"></h3>
-            <p id="modal-desc"></p>
-        </div>
-    </div>
+<section id="cart">
+  <h2>🛒 Cart</h2>
+  <div id="cartItems"></div>
+  <h3>Total ₹<span id="total">0</span></h3>
+  <button onclick="checkout()">Checkout</button>
+</section>
 
-    <section id="cart">
-        <h2>Your Cart</h2>
-        <div id="cart-items"></div>
-        <h3>Total: ₹<span id="total">0</span></h3>
-        <button id="checkout">Checkout</button>
-    </section>
-
-    <footer>
-        <p>© 2026 Micro Experiences Store</p>
-    </footer>
-
-    <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
