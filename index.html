@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Micro Experiences Store</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>🌟 Micro Experiences Store</h1>
+        <nav>
+            <a href="#experiences">Experiences</a>
+            <a href="#cart">Cart 🛒</a>
+        </nav>
+    </header>
+
+    <section id="experiences">
+        <h2>Choose Your Micro-Experience</h2>
+        <div class="products-container">
+            <!-- Product Cards with modal trigger -->
+            <div class="product-card" data-price="299" data-desc="Relax your mind in 5 minutes with guided audio and visuals." data-img="https://images.unsplash.com/photo-1507525428034-b723cf961d3e">
+                <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" alt="5-min Meditation">
+                <h3>5-Min Meditation Pack</h3>
+                <button class="view-details">View Details</button>
+                <button class="add-to-cart">Add to Cart - ₹299</button>
+            </div>
+
+            <div class="product-card" data-price="199" data-desc="Create your own slime with safe ingredients included." data-img="https://images.unsplash.com/photo-1596495577886-d920f8f4dc1c">
+                <img src="https://images.unsplash.com/photo-1596495577886-d920f8f4dc1c" alt="DIY Slime Kit">
+                <h3>DIY Slime Kit</h3>
+                <button class="view-details">View Details</button>
+                <button class="add-to-cart">Add to Cart - ₹199</button>
+            </div>
+
+            <div class="product-card" data-price="149" data-desc="Fold 5 creative origami designs with colorful papers." data-img="https://images.unsplash.com/photo-1591798307170-88f7d4979b6f">
+                <img src="https://images.unsplash.com/photo-1591798307170-88f7d4979b6f" alt="Origami Kit">
+                <h3>Origami Mini Kit</h3>
+                <button class="view-details">View Details</button>
+                <button class="add-to-cart">Add to Cart - ₹149</button>
+            </div>
+
+            <div class="product-card" data-price="249" data-desc="Cook a 10-minute snack using pre-portioned ingredients." data-img="https://images.unsplash.com/photo-1600891964599-f61ba0e24092">
+                <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092" alt="Mini Recipe Kit">
+                <h3>Mini Recipe Kit</h3>
+                <button class="view-details">View Details</button>
+                <button class="add-to-cart">Add to Cart - ₹249</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal for product details -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <img id="modal-img" src="" alt="">
+            <h3 id="modal-title"></h3>
+            <p id="modal-desc"></p>
+        </div>
+    </div>
+
+    <section id="cart">
+        <h2>Your Cart</h2>
+        <div id="cart-items"></div>
+        <h3>Total: ₹<span id="total">0</span></h3>
+        <button id="checkout">Checkout</button>
+    </section>
+
+    <footer>
+        <p>© 2026 Micro Experiences Store</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
