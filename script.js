@@ -1,103 +1,34 @@
-// Cart & Modal
-const addToCartButtons = document.querySelectorAll('.add-to-cart');
-const viewDetailsButtons = document.querySelectorAll('.view-details');
-const cartItemsContainer = document.getElementById('cart-items');
-const totalSpan = document.getElementById('total');
-
-const modal = document.getElementById('modal');
-const modalImg = document.getElementById('modal-img');
-const modalTitle = document.getElementById('modal-title');
-const modalDesc = document.getElementById('modal-desc');
-const modalClose = document.querySelector('.close');
-
 let cart = [];
 let total = 0;
 
-// Add to Cart with quantity
-addToCartButtons.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-        const productCard = e.target.parentElement;
-        const name = productCard.querySelector('h3').innerText;
-        const price = parseInt(productCard.dataset.price);
+function addToCart(btn){
+  let card = btn.parentElement;
+  let name = card.dataset.name;
+  let price = Number(card.dataset.price);
 
-        // Check if already in cart
-        const existing = cart.find(item => item.name === name);
-        if(existing){
-            existing.quantity += 1;
-        } else {
-            cart.push({ name, price, quantity: 1 });
-        }
-
-        updateCart();
-    });
-});
-
-function updateCart() {
-    cartItemsContainer.innerHTML = '';
-    total = 0;
-
-    cart.forEach((item, index) => {
-        total += item.price * item.quantity;
-
-        const div = document.createElement('div');
-        div.innerHTML = `
-            ${item.name} - ₹${item.price} x ${item.quantity}
-            <button onclick="increaseQty(${index})">+</button>
-            <button onclick="decreaseQty(${index})">-</button>
-            <button onclick="removeItem(${index})">Remove</button>
-        `;
-        cartItemsContainer.appendChild(div);
-    });
-
-    totalSpan.innerText = total;
+  cart.push({name, price});
+  total += price;
+  renderCart();
 }
 
-// Quantity & Remove Functions
-window.increaseQty = function(index){
-    cart[index].quantity += 1;
-    updateCart();
+function renderCart(){
+  let box = document.getElementById("cartItems");
+  box.innerHTML = "";
+  cart.forEach(i => {
+    box.innerHTML += `<p>${i.name} - ₹${i.price}</p>`;
+  });
+  document.getElementById("total").innerText = total;
 }
 
-window.decreaseQty = function(index){
-    if(cart[index].quantity > 1){
-        cart[index].quantity -= 1;
-    } else {
-        cart.splice(index, 1);
-    }
-    updateCart();
+function checkout(){
+  if(cart.length === 0){
+    alert("Cart empty");
+    return;
+  }
+  localStorage.setItem("totalAmount", total);
+  window.location.href = "payment.html";
 }
 
-window.removeItem = function(index){
-    cart.splice(index, 1);
-    updateCart();
+function toggleDark(){
+  document.body.classList.toggle("dark");
 }
-
-// Checkout
-document.getElementById('checkout').addEventListener('click', () => {
-    if(cart.length === 0){
-        alert("Your cart is empty!");
-        return;
-    }
-    alert(`Thank you for purchasing! Total: ₹${total}`);
-    cart = [];
-    updateCart();
-});
-
-// Modal Functionality
-viewDetailsButtons.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-        const productCard = e.target.parentElement;
-        modalImg.src = productCard.dataset.img;
-        modalTitle.innerText = productCard.querySelector('h3').innerText;
-        modalDesc.innerText = productCard.dataset.desc;
-        modal.style.display = 'block';
-    });
-});
-
-modalClose.addEventListener('click', () => {
-    modal.style.display = 'none';
-});
-
-window.addEventListener('click', (e) => {
-    if(e.target === modal) modal.style.display = 'none';
-});
